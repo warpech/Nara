@@ -1,0 +1,10 @@
+﻿<link rel="stylesheet" href="/Nara/style.css">
+
+<template>
+    <template is="dom-bind">
+        <starcounter-include partial="{{model.CurrentTask}}"></starcounter-include>
+        <button value="{{model.PreviousTask$::mouseup}}" onmousedown="++this.value">Previous task</button>
+        <button value="{{model.NextTask$::mouseup}}" onmousedown="++this.value">Next task</button>
+        <button value="{{model.CreateTask$::mouseup}}" onmousedown="++this.value">Create new task</button>
+    </template>
+</template>
