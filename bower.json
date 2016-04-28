@@ -1,0 +1,22 @@
+{
+  "name": "Nara",
+  "authors": [
+    "warpech <warpech@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "wwwroot/sys",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "time-elements": "^0.5.0"
+  }
+}

@@ -3,9 +3,15 @@
 }
 
 textarea {
-    height: calc(100vh - 140px);
+    height: calc(100vh - 90px);
     width: calc(100vw - 40px);
     font-size: 32px;
     font-family: monospace;
     background: transparent;
+}
+
+.nara-time-info {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
 }

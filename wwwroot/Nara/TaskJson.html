@@ -3,7 +3,9 @@
 <template>
     <template is="dom-bind">
         <textarea value="{{model.Description$::change}}"></textarea>
-        <div>Created <time>{{model.Created.When}}</time></div>
-        <div>Saved <time>{{model.LastEdit.When}}</time></div>
+        <div class="nara-time-info">
+            <span>Created <relative-time datetime$="{{model.Created.When}}">ago</relative-time></span> / 
+            <span>Saved <relative-time datetime$="{{model.LastEdit.When}}">ago</relative-time></span>
+        </div>
     </template>
 </template>
