@@ -9,4 +9,36 @@
             <button value="{{model.CreateTask$::mouseup}}" onmousedown="++this.value">Create new task</button>
         </div>
     </template>
+    <script>
+            var script = document._currentScript || document.currentScript;
+            var template = script.previousElementSibling;
+
+            function generatePatches() {
+                document.activeElement.blur();
+                var clickEvent = document.createEvent('MouseEvents');
+                clickEvent.initEvent("mouseup", true, true);
+                window.dispatchEvent(clickEvent);
+            }
+
+            window.addEventListener('keydown', function (event) {
+                //console.log(event.which, event.ctrlKey);
+                if (event.ctrlKey && event.which != 17) { //ctrl
+                    switch (event.which) {
+                        case 37: //left
+                            generatePatches();
+                            setTimeout(function () {
+                                template.set("model.PreviousTask$", template.get("model.PreviousTask$") + 1);
+                            }, 10);
+                            break;
+
+                        case 39: //right
+                            generatePatches();
+                            setTimeout(function () {
+                                template.set("model.NextTask$", template.get("model.NextTask$") + 1);
+                            }, 10);
+                            break;
+                    }
+                }
+            });
+    </script>
 </template>
