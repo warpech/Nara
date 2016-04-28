@@ -29,7 +29,7 @@ namespace Nara {
                     }
                     json.CurrentTaskIndex = json.TaskCreatedEvents.Count - 1;
                     taskJson.Data = json.TaskCreatedEvents[json.CurrentTaskIndex].Task;
-                    taskJson.Created.Data = json.TaskCreatedEvents[json.CurrentTaskIndex];
+                    taskJson.TaskCreatedEvent = json.TaskCreatedEvents[json.CurrentTaskIndex];
                     json.CurrentTask = taskJson;
 
                     json.Session = new Session(SessionOptions.PatchVersioning);

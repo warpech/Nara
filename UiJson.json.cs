@@ -31,7 +31,7 @@ namespace Nara {
 
         private void ShowTask(int index) {
             this.CurrentTask.Data = this.TaskCreatedEvents[index].Task;
-            ((TaskJson)this.CurrentTask).Created.Data = this.TaskCreatedEvents[index];
+            ((TaskJson)this.CurrentTask).TaskCreatedEvent = this.TaskCreatedEvents[index];
         }
 
         public int _PreviousTasksCount {

@@ -1,10 +1,8 @@
 {
     "Html": "/Nara/TaskJson.html",
     "Description$": "",
-    "Created": {
-        "When": ""
-    },
-    "LastEdit": {
-        "When": ""
-    }
+    "CreatedAt": "",
+    "$CreatedAt": {"Bind": "_CreatedAt"},
+    "LastEditAt": "",
+    "$LastEditAt": {"Bind": "_LastEditAt"}
 }
