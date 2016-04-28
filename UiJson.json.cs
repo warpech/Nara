@@ -34,6 +34,30 @@ namespace Nara {
             ((TaskJson)this.CurrentTask).Created.Data = this.TaskCreatedEvents[index];
         }
 
+        public int _PreviousTasksCount {
+            get {
+                return this.CurrentTaskIndex;
+            }
+        }
+
+        public int _NextTasksCount {
+            get {
+                return this.TaskCreatedEvents.Count - 1 - this.CurrentTaskIndex;
+            }
+        }
+
+        public int _TasksCount {
+            get {
+                return this.TaskCreatedEvents.Count;
+            }
+        }
+
+        public int _CurrentTaskNumber {
+            get {
+                return this.CurrentTaskIndex + 1;
+            }
+        }
+
         public TaskCreatedEvent CreateNewTask() {
             var task = new Task() {
             };

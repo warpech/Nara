@@ -8,6 +8,7 @@
             <button value="{{model.PreviousTask$::mouseup}}" onmousedown="++this.value">Previous task</button>
             <button value="{{model.NextTask$::mouseup}}" onmousedown="++this.value">Next task</button>
             <button value="{{model.CreateTask$::mouseup}}" onmousedown="++this.value">Create new task</button>
+            Task {{model.CurrentTaskNumber}} of {{model.TasksCount}}
         </div>
     </template>
     <script>
