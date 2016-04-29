@@ -2,16 +2,38 @@
     background-color: #FFF75C;
 }
 
-textarea {
-    height: calc(100vh - 90px);
+.nara-task {
+    position: relative;
+    height: calc(100vh - 60px);
     width: calc(100vw - 40px);
+}
+
+.nara-task textarea {
+    width: 100%;
+    height: calc(80vh - 60px);
     font-size: 32px;
-    font-family: monospace;
-    background: transparent;
+    font-family: Monaco, Consolas, Courier, 'Courier New', monospace;
+    background: rgba(255, 255, 255, 0.3);
+    border-width: 0;
+    box-shadow: none;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+.nara-task textarea:focus {
+    outline: 2px solid #666666;
 }
 
 .nara-time-info {
     position: absolute;
-    bottom: 30px;
-    right: 20px;
+    bottom: 0px;
+    right: 0px;
+    height: 32px;
+}
+
+.nara-tasks-switcher {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    height: 35px;
 }
