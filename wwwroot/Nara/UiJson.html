@@ -37,14 +37,14 @@
                         case 37: //left
                             generatePatches();
                             setTimeout(function () {
-                                template.set("model.PreviousTask$", template.get("model.PreviousTask$") + 1);
+                                template.set("model.PreviousTask$", parseInt(template.get("model.PreviousTask$"), 10) + 1);
                             }, 10);
                             break;
 
                         case 39: //right
                             generatePatches();
                             setTimeout(function () {
-                                template.set("model.NextTask$", template.get("model.NextTask$") + 1);
+                                template.set("model.NextTask$", parseInt(template.get("model.NextTask$"), 10) + 1);
                             }, 10);
                             break;
                     }
