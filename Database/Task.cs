@@ -11,7 +11,7 @@ namespace Nara {
 
         public TaskEditedEvent LastEdit {
             get {
-                return Db.SQL<TaskEditedEvent>("SELECT e FROM TaskEditedEvent e WHERE e.Task = ? ORDER BY e.When DESC FETCH ?", this, 1).First;
+                return Db.SQL<TaskEditedEvent>("SELECT e FROM TaskEditedEvent e WHERE e.Task = ? ORDER BY e.ObjectNo DESC FETCH ?", this, 1).First;
             }
         }
     }

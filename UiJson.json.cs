@@ -65,7 +65,7 @@ namespace Nara {
             var created = new TaskCreatedEvent() {
                 Task = task,
                 User = this.User,
-                When = DateTime.Now
+                When = DateTime.UtcNow
             };
 
             return created;

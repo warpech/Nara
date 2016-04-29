@@ -10,7 +10,7 @@ namespace Nara {
             var edited = new TaskEditedEvent() {
                 Task = this.Data,
                 User = this.User,
-                When = DateTime.Now,
+                When = DateTime.UtcNow,
                 Description = action.Value
             };
             Transaction.Commit();
@@ -18,14 +18,14 @@ namespace Nara {
 
         public string _CreatedAt {
             get {
-                return this.TaskCreatedEvent.When.ToUniversalTime().ToString();
+                return this.TaskCreatedEvent.When.ToString("r");
             }
         }
 
         public string _LastEditAt {
             get {
                 if (this.Data.LastEdit != null) {
-                    return this.Data.LastEdit.When.ToUniversalTime().ToString();
+                    return this.Data.LastEdit.When.ToString("r");
                 }
                 return "";
             }
