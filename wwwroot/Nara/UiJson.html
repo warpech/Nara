@@ -24,7 +24,15 @@
 
             window.addEventListener('keydown', function (event) {
                 //console.log(event.which, event.ctrlKey);
-                if (event.ctrlKey && event.which != 17) { //ctrl
+                //if (event.ctrlKey && event.which != 17) { //ctrl
+                if (document.activeElement.nodeName === "TEXTAREA") {
+                    switch (event.which) {
+                        case 27: //esc
+                            document.activeElement.blur();
+                            break;
+                    }
+                }
+                else {
                     switch (event.which) {
                         case 37: //left
                             generatePatches();
