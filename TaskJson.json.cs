@@ -4,7 +4,6 @@ using System;
 namespace Nara {
     partial class TaskJson : Json, IBound<Task> {
         public User User;
-        public TaskCreatedEvent TaskCreatedEvent;
 
         void Handle(Input.Description action) {
             var edited = new TaskEditedEvent() {
@@ -18,7 +17,7 @@ namespace Nara {
 
         public string _CreatedAt {
             get {
-                return this.TaskCreatedEvent.When.ToString("r");
+                return this.Data.Created.When.ToString("r");
             }
         }
 

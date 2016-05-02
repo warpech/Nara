@@ -14,23 +14,47 @@ namespace Nara {
                 });
             }
 
+            //migration: add stacks
+
+            Stack stack = Db.SQL<Stack>("SELECT s FROM Stack s").First;
+            if (stack == null) {
+                Db.Transact(() => {
+                    stack = new Stack() {
+                    };
+                });
+            }
+
+            var tasks = Db.SQL<Task>("SELECT t FROM Task t");
+            foreach (var task in tasks) {
+                if (task.Stack == null) {
+                    Db.Transact(() => {
+                        new TaskAddedToStackEvent() {
+                            Task = task,
+                            User = me,
+                            When = DateTime.UtcNow,
+                            Stack = stack
+                        };
+                    });
+                }
+            }
+
+            //app
+
             Application.Current.Use(new HtmlFromJsonProvider());
             Application.Current.Use(new PartialToStandaloneHtmlProvider());
 
             Handle.GET("/Nara", () => {
                 return Db.Scope(() => {
-                    var json = new UiJson();
-                    json.TaskCreatedEvents = Db.SQL<TaskCreatedEvent>("SELECT e FROM TaskCreatedEvent e WHERE e.User = ? ORDER BY e.When ASC", me).ToList();
-                    json.User = me;
-                    var taskJson = new TaskJson();
-                    taskJson.User = me;
-                    if (json.TaskCreatedEvents.Count == 0) {
-                        json.CreateNewTask();
-                    }
-                    json.CurrentTaskIndex = json.TaskCreatedEvents.Count - 1;
-                    taskJson.Data = json.TaskCreatedEvents[json.CurrentTaskIndex].Task;
-                    taskJson.TaskCreatedEvent = json.TaskCreatedEvents[json.CurrentTaskIndex];
-                    json.CurrentTask = taskJson;
+                    var json = new UiJson() {
+                        User = me
+                    };
+
+                    json.CurrentTask = new TaskJson() {
+                        User = me
+                    };
+
+                    json.Stacks = Db.SQL<Stack>("SELECT s FROM Stack s").ToList();
+                    json.ShowStack(0);
 
                     json.Session = new Session(SessionOptions.PatchVersioning);
                     return json;

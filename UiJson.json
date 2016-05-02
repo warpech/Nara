@@ -4,12 +4,18 @@
     "PreviousTask$": 0,
     "NextTask$": 0,
     "CreateTask$": 0,
+
     "PreviousTasksCount": 0,
     "$PreviousTasksCount": {"Bind": "_PreviousTasksCount"},
     "NextTasksCount": 0,
     "$NextTasksCount": {"Bind": "_NextTasksCount"},
     "TasksCount": 0,
     "$TasksCount": { "Bind": "_TasksCount" },
+
     "CurrentTaskNumber": 0,
-    "$CurrentTaskNumber": { "Bind": "_CurrentTaskNumber" }
+    "$CurrentTaskNumber": { "Bind": "_CurrentTaskNumber" },
+
+    "PreviousStack$": 0,
+    "NextStack$": 0,
+    "CreateStack$": 0
 }

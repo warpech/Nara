@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Event.cs" />
+    <Compile Include="Database\Stack.cs" />
     <Compile Include="Database\Task.cs" />
+    <Compile Include="Database\TaskAddedToStack.cs" />
     <Compile Include="Database\TaskEditedEvent.cs" />
     <Compile Include="Database\TaskResolvedEvent.cs" />
     <Compile Include="Database\TaskCreatedEvent.cs" />
