@@ -52,14 +52,24 @@
                         case 38: //top
                             generatePatches();
                             setTimeout(function () {
-                                template.set("model.PreviousStack$", parseInt(template.get("model.PreviousStack$"), 10) + 1);
+                                if (event.ctrlKey || event.metaKey) {
+                                    template.set("model.MoveTaskToPreviousStack$", parseInt(template.get("model.MoveTaskToPreviousStack$"), 10) + 1);
+                                }
+                                else {
+                                    template.set("model.PreviousStack$", parseInt(template.get("model.PreviousStack$"), 10) + 1);
+                                }
                             }, 10);
                             break;
 
                         case 40: //bottom
                             generatePatches();
                             setTimeout(function () {
-                                template.set("model.NextStack$", parseInt(template.get("model.NextStack$"), 10) + 1);
+                                if (event.ctrlKey || event.metaKey) {
+                                    template.set("model.MoveTaskToNextStack$", parseInt(template.get("model.MoveTaskToNextStack$"), 10) + 1);
+                                }
+                                else {
+                                    template.set("model.NextStack$", parseInt(template.get("model.NextStack$"), 10) + 1);
+                                }
                             }, 10);
                             break;
                     }

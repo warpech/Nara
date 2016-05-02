@@ -17,5 +17,7 @@
 
     "PreviousStack$": 0,
     "NextStack$": 0,
+    "MoveTaskToPreviousStack$": 0,
+    "MoveTaskToNextStack$": 0,
     "CreateStack$": 0
 }

@@ -50,6 +50,38 @@ namespace Nara {
             }
         }
 
+        void Handle(Input.MoveTaskToPreviousStack action) {
+            if (this.CurrentStackIndex > 0) {
+                this.CurrentStackIndex--;
+
+                new TaskAddedToStackEvent() {
+                    Task = (Task)this.CurrentTask.Data,
+                    User = this.User,
+                    When = DateTime.UtcNow,
+                    Stack = this.Stacks[this.CurrentStackIndex]
+                };
+                Transaction.Commit();
+
+                this.ShowStack(this.CurrentStackIndex);
+            }
+        }
+
+        void Handle(Input.MoveTaskToNextStack action) {
+            if (this.CurrentStackIndex < this.Stacks.Count - 1) {
+                this.CurrentStackIndex++;
+
+                new TaskAddedToStackEvent() {
+                    Task = (Task)this.CurrentTask.Data,
+                    User = this.User,
+                    When = DateTime.UtcNow,
+                    Stack = this.Stacks[this.CurrentStackIndex]
+                };
+                Transaction.Commit();
+
+                this.ShowStack(this.CurrentStackIndex);
+            }
+        }
+
         public void ShowTask(int index) {
             this.CurrentTaskIndex = index;
             this.CurrentTask.Data = this.TasksInStack[index];
@@ -58,7 +90,7 @@ namespace Nara {
         public void ShowStack(int index) {
             this.CurrentStackIndex = index;
             this.Stack = this.Stacks[index];
-            this.TasksInStack = Db.SQL<Task>("SELECT t FROM Task t WHERE t.Stack = ?", this.Stack).ToList();
+            this.TasksInStack = Db.SQL<Task>("SELECT t FROM Task t WHERE t.Stacked.Stack = ? ORDER BY t.Stacked.When ASC", this.Stack).ToList();
 
             if (this.TasksInStack.Count == 0) {
                 var created = this.CreateNewTask();
@@ -107,6 +139,7 @@ namespace Nara {
                 When = DateTime.UtcNow,
                 Stack = this.Stack
             };
+            Transaction.Commit();
 
             return task;
         }
@@ -114,6 +147,7 @@ namespace Nara {
         public Stack CreateNewStack() {
             var stack = new Stack() {
             };
+            Transaction.Commit();
 
             return stack;
         }

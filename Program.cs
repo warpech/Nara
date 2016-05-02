@@ -26,7 +26,7 @@ namespace Nara {
 
             var tasks = Db.SQL<Task>("SELECT t FROM Task t");
             foreach (var task in tasks) {
-                if (task.Stack == null) {
+                if (task.Stacked == null) {
                     Db.Transact(() => {
                         new TaskAddedToStackEvent() {
                             Task = task,

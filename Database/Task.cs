@@ -9,9 +9,9 @@ namespace Nara {
             }
         }
 
-        public Stack Stack {
+        public TaskAddedToStackEvent Stacked {
             get {
-                return Db.SQL<Stack>("SELECT e.Stack FROM Nara.TaskAddedToStackEvent e WHERE e.Task = ? ORDER BY e.ObjectNo DESC FETCH ?", this, 1).First;
+                return Db.SQL<TaskAddedToStackEvent>("SELECT e FROM Nara.TaskAddedToStackEvent e WHERE e.Task = ? ORDER BY e.When DESC FETCH ?", this, 1).First;
             }
         }
 
